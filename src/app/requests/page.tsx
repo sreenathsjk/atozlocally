@@ -7,7 +7,7 @@ import { useAuth } from "@/lib/auth-context";
 import { getServiceRequests, addServiceRequest } from "@/lib/firestore";
 import { useLocation } from "@/hooks/useLocation";
 import { ServiceRequest, ServiceCategory, SERVICE_CATEGORIES } from "@/types";
-import AppShell from '../../components/layout/AppShell'
+import AppShell from '../../components/layout/AppShell';
 import RequestCard from "@/components/feed/RequestCard";
 import toast from "react-hot-toast";
 
