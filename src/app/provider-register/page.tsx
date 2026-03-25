@@ -7,7 +7,7 @@ import { useAuth } from "@/lib/auth-context";
 import { addProvider } from "@/lib/firestore";
 import { useLocation } from "@/hooks/useLocation";
 import { ServiceCategory, SERVICE_CATEGORIES } from "@/types";
-import AppShell from "@/components/layout/AppShell";
+import AppShell from '../../components/layout/AppShell';
 import toast from "react-hot-toast";
 
 const ADMIN_WHATSAPP = process.env.NEXT_PUBLIC_ADMIN_WHATSAPP || "919999999999";
