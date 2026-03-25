@@ -51,17 +51,19 @@ export default function ProviderRegisterPage() {
     setSubmitting(true);
 
     try {
-      const providerId = await addProvider({
-        name: form.name,
-        phone: form.phone,
-        category: form.category,
-        experience: form.experience,
-        location: location || { lat: 19.076, lng: 72.877 },
-        address: form.address,
-        priceRange: form.priceRange,
-        profileImage: previewUrl || "",
-        userId: user.uid,
-      });
+       const providerId = await addProvider({
+  name: form.name,
+  phone: form.phone,
+  category: form.category,
+  experience: form.experience,
+  location: location || { lat: 19.076, lng: 72.877 },
+  address: form.address,
+  priceRange: form.priceRange,
+  profileImage: previewUrl || "",
+  userId: user.uid,
+
+  createdAt: new Date(), // ✅ ADD THIS LINE
+});
 
       // Send to admin via WhatsApp
       const cat = SERVICE_CATEGORIES[form.category];
