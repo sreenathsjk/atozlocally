@@ -51,7 +51,7 @@ export default function ProviderRegisterPage() {
     setSubmitting(true);
 
     try {
-       const providerId = await addProvider({
+        const providerId = await addProvider({
   name: form.name,
   phone: form.phone,
   category: form.category,
@@ -62,7 +62,8 @@ export default function ProviderRegisterPage() {
   profileImage: previewUrl || "",
   userId: user.uid,
 
-  createdAt: new Date(), // ✅ ADD THIS LINE
+  createdAt: Date.now(), // ✅ ADD THIS LINE HERE
+
 });
 
       // Send to admin via WhatsApp
