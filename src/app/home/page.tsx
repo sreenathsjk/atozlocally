@@ -7,7 +7,7 @@ import { useAuth } from "@/lib/auth-context";
 import { getApprovedProviders, haversineDistance } from "@/lib/firestore";
 import { Provider, ServiceCategory, SERVICE_CATEGORIES } from "@/types";
 import { useLocation } from "@/hooks/useLocation";
-import AppShell from "@/components/layout/AppShell";
+import AppShell from '../../components/layout/AppShell'
 import ProviderCard from "@/components/feed/ProviderCard";
 import SkeletonCard from "@/components/ui/SkeletonCard";
 
