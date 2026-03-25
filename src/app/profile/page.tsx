@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { LogOut, ChevronRight, Briefcase, Phone, Shield, Star, Users } from "lucide-react";
 import { useAuth } from "@/lib/auth-context";
-import AppShell from '../../components/layout/AppShell'
+import AppShell from '../../components/layout/AppShell';
 import toast from "react-hot-toast";
 
 export default function ProfilePage() {
