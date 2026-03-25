@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="theme-color" content="#080810" />
+    <title>AtoZ Service Hub</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        background: #080810;
+        color: #fff;
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        overflow: hidden;
+      }
+
+      /* Orbs */
+      .orb {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(80px);
+        pointer-events: none;
+        z-index: 0;
+      }
+      .orb-1 { width: 300px; height: 300px; background: #00f5ff; opacity: 0.06; top: -80px; right: -80px; }
+      .orb-2 { width: 250px; height: 250px; background: #bf5af2; opacity: 0.06; bottom: 80px; left: -80px; }
+
+      .content {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        max-width: 360px;
+        width: 100%;
+      }
+
+      /* Logo */
+      .logo {
+        width: 88px;
+        height: 88px;
+        border-radius: 24px;
+        background: linear-gradient(135deg, #00f5ff, #bf5af2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 24px;
+        box-shadow: 0 0 30px #00f5ff30, 0 0 60px #00f5ff15;
+        animation: float 3s ease-in-out infinite;
+      }
+      .logo span {
+        font-size: 40px;
+        font-weight: 900;
+        color: #080810;
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        line-height: 1;
+      }
+
+      h1 {
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        margin-bottom: 8px;
+      }
+      h1 .accent {
+        color: #00f5ff;
+        text-shadow: 0 0 20px #00f5ff80;
+      }
+
+      .tagline {
+        color: rgba(255,255,255,0.4);
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 40px;
+      }
+
+      /* Feature pills */
+      .features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-bottom: 40px;
+      }
+      .pill {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 14px;
+        border-radius: 99px;
+        font-size: 12px;
+        font-weight: 500;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        color: rgba(255,255,255,0.6);
+      }
+
+      /* CTA Button */
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 16px 32px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #00f5ff, #bf5af2);
+        color: #080810;
+        font-size: 16px;
+        font-weight: 700;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 0 30px #00f5ff25;
+        transition: opacity 0.2s, transform 0.1s;
+        margin-bottom: 12px;
+      }
+      .cta:hover { opacity: 0.9; transform: translateY(-1px); }
+      .cta:active { transform: scale(0.98); }
+
+      .sub-link {
+        color: rgba(255,255,255,0.3);
+        font-size: 12px;
+        text-decoration: none;
+      }
+      .sub-link:hover { color: rgba(255,255,255,0.6); }
+
+      /* Categories strip */
+      .categories {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding: 0 4px 4px;
+        margin-top: 36px;
+        scrollbar-width: none;
+      }
+      .categories::-webkit-scrollbar { display: none; }
+      .cat {
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.06);
+        font-size: 11px;
+        color: rgba(255,255,255,0.4);
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .cat:hover { background: rgba(0,245,255,0.08); border-color: rgba(0,245,255,0.3); color: #00f5ff; }
+      .cat .emoji { font-size: 22px; }
+
+      /* Loading dots */
+      .dots { display: flex; gap: 6px; justify-content: center; margin-top: 32px; }
+      .dot {
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        background: #00f5ff;
+      }
+      .dot:nth-child(1) { animation: pulse 1.2s ease-in-out 0s infinite; }
+      .dot:nth-child(2) { animation: pulse 1.2s ease-in-out 0.2s infinite; }
+      .dot:nth-child(3) { animation: pulse 1.2s ease-in-out 0.4s infinite; }
+
+      @keyframes pulse {
+        0%, 100% { opacity: 0.2; transform: scale(0.8); }
+        50% { opacity: 1; transform: scale(1.2); }
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <div class="content">
+      <div class="logo"><span>A</span></div>
+
+      <h1>AtoZ <span class="accent">Service Hub</span></h1>
+      <p class="tagline">Discover verified service providers near you — plumbers, electricians, cleaners & more.</p>
+
+      <div class="features">
+        <div class="pill">📍 Hyperlocal</div>
+        <div class="pill">✅ Verified Pros</div>
+        <div class="pill">💬 WhatsApp Contact</div>
+        <div class="pill">⚡ Instant Match</div>
+      </div>
+
+      <a class="cta" href="/home">
+        🚀 Find a Service Provider
+      </a>
+      <br/>
+      <a class="sub-link" href="/auth">Sign In / Sign Up</a>
+
+      <div class="categories">
+        <a class="cat" href="/home"><span class="emoji">🔧</span>Plumber</a>
+        <a class="cat" href="/home"><span class="emoji">⚡</span>Electric</a>
+        <a class="cat" href="/home"><span class="emoji">🧹</span>Cleaner</a>
+        <a class="cat" href="/home"><span class="emoji">❄️</span>AC Repair</a>
+        <a class="cat" href="/home"><span class="emoji">🎨</span>Painter</a>
+        <a class="cat" href="/home"><span class="emoji">🪚</span>Carpenter</a>
+        <a class="cat" href="/home"><span class="emoji">👨‍🍳</span>Cook</a>
+        <a class="cat" href="/home"><span class="emoji">📚</span>Tutor</a>
+      </div>
+
+      <div class="dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+  </body>
+</html>
