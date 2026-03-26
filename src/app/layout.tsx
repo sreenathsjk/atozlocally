@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+ import type { Metadata, Viewport } from "next";
 import { Syne, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/lib/auth-context";
@@ -25,8 +25,13 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "AtoZ Service Hub",
   description: "Discover nearby service providers in seconds",
+};
+
+export const viewport: Viewport = {
   themeColor: "#080810",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
